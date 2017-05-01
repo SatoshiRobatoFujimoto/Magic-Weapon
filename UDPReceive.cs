@@ -3,9 +3,15 @@ using System.Collections;
 
 using System;
 using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
+
+//using System.Net;
+//using System.Net.Sockets;
+//using System.Threading;
+
+&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
+using Windows.Networking.Sockets;
+&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
+
 
 using System.Collections.Generic; 
 using System.Runtime.Serialization.Formatters.Binary; 
@@ -17,7 +23,9 @@ public class UDPReceive : MonoBehaviour {
 	Thread receiveThread;
 
 	// udpclient object
+	&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
 	UdpClient client;
+	&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 
 	public int port;
 
@@ -30,7 +38,7 @@ public class UDPReceive : MonoBehaviour {
 	public string allReceivedUDPPackets=""; // clean up this from time to time!
 
 	// start from unity3d
-	public void Start()
+	async void Start()
 	{
 		init();
 	}
@@ -51,6 +59,7 @@ public class UDPReceive : MonoBehaviour {
 	// init
 	private void init()
 	{
+		&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
 		print("UDPSend.init()");
 
 		// define port
@@ -64,10 +73,13 @@ public class UDPReceive : MonoBehaviour {
 			new ThreadStart(ReceiveData));
 		receiveThread.IsBackground = true;
 		receiveThread.Start();
+
+		&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 	}
 
 	// receive thread
-	private  void ReceiveData()
+	&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
+	private async void ReceiveData()
 	{
 		client = new UdpClient(port);
 
@@ -96,6 +108,7 @@ public class UDPReceive : MonoBehaviour {
 			}
 		}
 	}
+	&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 
 	public void Update() {
 		sword.transform.position = swordPos;
@@ -107,19 +120,6 @@ public class UDPReceive : MonoBehaviour {
 	{
 		allReceivedUDPPackets="";
 		return lastReceivedUDPPacket;
-	}
-		
-	// Convert a byte array to an Object
-	public static Vector3 ByteArrayToObject(byte[] arrBytes)
-	{
-		using (var memStream = new MemoryStream())
-		{
-			var binForm = new BinaryFormatter();
-			memStream.Write(arrBytes, 0, arrBytes.Length);
-			memStream.Seek(0, SeekOrigin.Begin);
-			var obj = binForm.Deserialize(memStream);
-			return (Vector3)obj;
-		}
 	}
 
 	// (4.2, 3.0, 0.0)(0.0,0.0,0.0)
