@@ -4,13 +4,9 @@ using System.Collections;
 using System;
 using System.Text;
 
-//using System.Net;
-//using System.Net.Sockets;
-//using System.Threading;
-
-&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
-using Windows.Networking.Sockets;
-&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 
 using System.Collections.Generic; 
@@ -23,9 +19,7 @@ public class UDPReceive : MonoBehaviour {
 	Thread receiveThread;
 
 	// udpclient object
-	&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
 	UdpClient client;
-	&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 
 	public int port;
 
@@ -59,7 +53,6 @@ public class UDPReceive : MonoBehaviour {
 	// init
 	private void init()
 	{
-		&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
 		print("UDPSend.init()");
 
 		// define port
@@ -73,12 +66,9 @@ public class UDPReceive : MonoBehaviour {
 			new ThreadStart(ReceiveData));
 		receiveThread.IsBackground = true;
 		receiveThread.Start();
-
-		&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 	}
 
 	// receive thread
-	&lt;a href="/search?Search=%23if&amp;amp;Mode=like"&gt;#if&lt;/a&gt; !UNITY_EDITOR
 	private async void ReceiveData()
 	{
 		client = new UdpClient(port);
@@ -108,7 +98,6 @@ public class UDPReceive : MonoBehaviour {
 			}
 		}
 	}
-	&lt;a href="/search?Search=%23endif&amp;amp;Mode=like"&gt;#endif&lt;/a&gt;
 
 	public void Update() {
 		sword.transform.position = swordPos;

@@ -91,8 +91,8 @@ public class UDPSend : MonoBehaviour
 	{
 		print("UDPSend.init()");
 
-		IP="127.0.0.1";
-		port=8051;
+		IP="158.130.168.72";
+		port=12345;
 
 		remoteEndPoint = new IPEndPoint(IPAddress.Parse(IP), port);
 		client = new UdpClient();
@@ -120,26 +120,6 @@ public class UDPSend : MonoBehaviour
 		}
 	}
 
-	// endless test
-	private void sendEndless(string testStr)
-	{
-		do
-		{
-			sendString(testStr);
-		}
-		while(true);
-	}
-
-	// Convert an object to a byte array
-	public static byte[] ObjectToByteArray(Vector3 obj)
-	{
-		BinaryFormatter bf = new BinaryFormatter();
-		using (var ms = new MemoryStream())
-		{
-			bf.Serialize(ms, obj);
-			return ms.ToArray();
-		}
-	}
 
 }
 
